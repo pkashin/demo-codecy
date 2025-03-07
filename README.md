@@ -1,0 +1,2 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/279a1882c8af465fab132b35e7a364e7)](https://app.codacy.com/gh/pkashin/demo-codecy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/279a1882c8af465fab132b35e7a364e7)](https://app.codacy.com/gh/pkashin/demo-codecy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
