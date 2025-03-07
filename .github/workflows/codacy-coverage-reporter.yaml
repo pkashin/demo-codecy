@@ -43,3 +43,4 @@ jobs:
           # coverage-reports: <PATH_TO_REPORT>
           # or a comma-separated list for multiple reports
           # coverage-reports: <PATH_TO_REPORT>, <PATH_TO_REPORT>
+          force-coverage-parser: go
