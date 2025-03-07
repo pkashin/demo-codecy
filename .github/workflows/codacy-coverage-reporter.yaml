@@ -2,8 +2,16 @@ name: Codacy Coverage Reporter
 
 on:
   push:
+    branches: main
   pull_request:
-    branches: [main]
+
+permissions:
+  # Required: allow read access to the content for analysis.
+  contents: read
+  # Optional: allow read access to pull request. Use with `only-new-issues` option.
+  # pull-requests: read
+  # Optional: allow write access to checks to allow the action to annotate code in the PR.
+  # checks: write
 
 jobs:
   codacy-coverage-reporter:
@@ -13,20 +21,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: codacy-coverage-reporter
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-      - name: Setup Go
-        id: go
-        uses: actions/setup-go@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.24
-      - name: Install golangci-lint
+      - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.64.6
-      - name: Build
+          version: v1.64
+      - name: build
         run: go build
-      - name: Run unit tests
+      - name: run unit tests
         run: go test -coverprofile=unit.coverage.out ./...
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
