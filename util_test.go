@@ -5,6 +5,30 @@ import (
 	"testing"
 )
 
+func BenchmarkExample(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+	}
+}
+
+func BenchmarkFib10(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(10)
+	}
+}
+
+func BenchmarkFib20(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(20)
+	}
+}
+
+func BenchmarkFib20WithAuxMetric(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(20)
+	}
+	b.ReportMetric(4.0, "auxMetricUnits")
+}
+
 func TestFormatPath(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -47,6 +71,29 @@ func TestFormatPath(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := formatPath(tt.path)
 			assert.Equal(t, tt.expected, result, "formatPath(%q)", tt.path)
+		})
+	}
+}
+
+func Test_abc(t *testing.T) {
+	type args struct {
+		a int
+		b int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "check",
+			args: args{2, 2},
+			want: 4,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, abc(tt.args.a, tt.args.b), "abc(%v, %v)", tt.args.a, tt.args.b)
 		})
 	}
 }
